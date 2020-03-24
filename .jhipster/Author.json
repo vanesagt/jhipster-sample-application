@@ -12,12 +12,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-many",
-            "otherEntityName": "location",
-            "otherEntityRelationshipName": "author",
-            "relationshipName": "location"
-        },
-        {
             "relationshipType": "many-to-many",
             "otherEntityName": "book",
             "otherEntityRelationshipName": "authors",

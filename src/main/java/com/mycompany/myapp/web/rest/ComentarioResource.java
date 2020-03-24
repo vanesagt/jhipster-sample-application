@@ -5,16 +5,10 @@ import com.mycompany.myapp.repository.ComentarioRepository;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
-import io.github.jhipster.web.util.PaginationUtil;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -89,15 +83,12 @@ public class ComentarioResource {
     /**
      * {@code GET  /comentarios} : get all the comentarios.
      *
-     * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of comentarios in body.
      */
     @GetMapping("/comentarios")
-    public ResponseEntity<List<Comentario>> getAllComentarios(Pageable pageable) {
-        log.debug("REST request to get a page of Comentarios");
-        Page<Comentario> page = comentarioRepository.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    public List<Comentario> getAllComentarios() {
+        log.debug("REST request to get all Comentarios");
+        return comentarioRepository.findAll();
     }
 
     /**

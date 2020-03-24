@@ -21,15 +21,15 @@
     <div class="table-responsive" id="entities" *ngIf="comentarios?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="reset.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="comentario"><span jhiTranslate="jhipsterSampleApplicationApp.comentario.comentario">Comentario</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="valoracion"><span jhiTranslate="jhipsterSampleApplicationApp.comentario.valoracion">Valoracion</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="book.id"><span jhiTranslate="jhipsterSampleApplicationApp.comentario.book">Book</span> <fa-icon icon="sort"></fa-icon></th>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.comentario.comentario">Comentario</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.comentario.valoracion">Valoracion</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.comentario.book">Book</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tbody>
                 <tr *ngFor="let comentario of comentarios ;trackBy: trackId">
                     <td><a [routerLink]="['/comentario', comentario.id, 'view']">{{ comentario.id }}</a></td>
                     <td>{{ comentario.comentario }}</td>
