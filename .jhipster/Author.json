@@ -1,0 +1,40 @@
+{
+    "name": "Author",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "apellido",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "location",
+            "otherEntityRelationshipName": "author",
+            "relationshipName": "location"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "book",
+            "otherEntityRelationshipName": "authors",
+            "relationshipName": "books",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200324145800",
+    "entityTableName": "author",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
