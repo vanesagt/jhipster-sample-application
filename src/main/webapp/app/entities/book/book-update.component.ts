@@ -4,12 +4,9 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { IBook, Book } from 'app/shared/model/book.model';
 import { BookService } from './book.service';
-import { IEditorial } from 'app/shared/model/editorial.model';
-import { EditorialService } from 'app/entities/editorial/editorial.service';
 
 @Component({
   selector: 'jhi-book-update',
@@ -17,47 +14,18 @@ import { EditorialService } from 'app/entities/editorial/editorial.service';
 })
 export class BookUpdateComponent implements OnInit {
   isSaving = false;
-  editorials: IEditorial[] = [];
 
   editForm = this.fb.group({
     id: [],
     title: [],
-    description: [],
-    editorial: []
+    description: []
   });
 
-  constructor(
-    protected bookService: BookService,
-    protected editorialService: EditorialService,
-    protected activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(protected bookService: BookService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ book }) => {
       this.updateForm(book);
-
-      this.editorialService
-        .query({ filter: 'book-is-null' })
-        .pipe(
-          map((res: HttpResponse<IEditorial[]>) => {
-            return res.body || [];
-          })
-        )
-        .subscribe((resBody: IEditorial[]) => {
-          if (!book.editorial || !book.editorial.id) {
-            this.editorials = resBody;
-          } else {
-            this.editorialService
-              .find(book.editorial.id)
-              .pipe(
-                map((subRes: HttpResponse<IEditorial>) => {
-                  return subRes.body ? [subRes.body].concat(resBody) : resBody;
-                })
-              )
-              .subscribe((concatRes: IEditorial[]) => (this.editorials = concatRes));
-          }
-        });
     });
   }
 
@@ -65,8 +33,7 @@ export class BookUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: book.id,
       title: book.title,
-      description: book.description,
-      editorial: book.editorial
+      description: book.description
     });
   }
 
@@ -89,8 +56,7 @@ export class BookUpdateComponent implements OnInit {
       ...new Book(),
       id: this.editForm.get(['id'])!.value,
       title: this.editForm.get(['title'])!.value,
-      description: this.editForm.get(['description'])!.value,
-      editorial: this.editForm.get(['editorial'])!.value
+      description: this.editForm.get(['description'])!.value
     };
   }
 
@@ -108,9 +74,5 @@ export class BookUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
-  }
-
-  trackById(index: number, item: IEditorial): any {
-    return item.id;
   }
 }

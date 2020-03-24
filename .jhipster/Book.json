@@ -12,14 +12,6 @@
     ],
     "relationships": [
         {
-            "relationshipType": "one-to-one",
-            "otherEntityName": "editorial",
-            "otherEntityRelationshipName": "book",
-            "relationshipName": "editorial",
-            "otherEntityField": "id",
-            "ownerSide": true
-        },
-        {
             "relationshipType": "one-to-many",
             "otherEntityName": "comentario",
             "otherEntityRelationshipName": "book",
@@ -37,7 +29,7 @@
     "changelogDate": "20200324145600",
     "entityTableName": "book",
     "dto": "no",
-    "pagination": "pagination",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,

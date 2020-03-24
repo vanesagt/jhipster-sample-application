@@ -18,7 +18,6 @@
       },
       "name": "Name",
       "apellido": "Apellido",
-      "location": "Location",
       "books": "Books"
     }
   }

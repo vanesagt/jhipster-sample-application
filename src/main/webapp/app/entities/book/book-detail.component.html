@@ -16,12 +16,6 @@
                 <dd>
                     <span>{{ book.description }}</span>
                 </dd>
-                <dt><span jhiTranslate="jhipsterSampleApplicationApp.book.editorial">Editorial</span></dt>
-                <dd>
-                    <div *ngIf="book.editorial">
-                        <a [routerLink]="['/editorial', book.editorial?.id, 'view']">{{ book.editorial?.id }}</a>
-                    </div>
-                </dd>
             </dl>
 
             <button type="submit"

@@ -31,10 +31,6 @@ public class Book implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @OneToOne
-    @JoinColumn(unique = true)
-    private Editorial editorial;
-
     @OneToMany(mappedBy = "book")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Comentario> comentarios = new HashSet<>();
@@ -77,19 +73,6 @@ public class Book implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Editorial getEditorial() {
-        return editorial;
-    }
-
-    public Book editorial(Editorial editorial) {
-        this.editorial = editorial;
-        return this;
-    }
-
-    public void setEditorial(Editorial editorial) {
-        this.editorial = editorial;
     }
 
     public Set<Comentario> getComentarios() {

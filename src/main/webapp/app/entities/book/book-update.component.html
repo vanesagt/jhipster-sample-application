@@ -22,14 +22,6 @@
                     <input type="text" class="form-control" name="description" id="field_description"
                            formControlName="description"/>
                 </div>
-
-                <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.book.editorial" for="field_editorial">Editorial</label>
-                    <select class="form-control" id="field_editorial" name="editorial" formControlName="editorial">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="editorialOption.id === editForm.get('editorial')!.value?.id ? editForm.get('editorial')!.value : editorialOption" *ngFor="let editorialOption of editorials; trackBy: trackById">{{ editorialOption.id }}</option>
-                    </select>
-                </div>
             </div>
 
             <div>

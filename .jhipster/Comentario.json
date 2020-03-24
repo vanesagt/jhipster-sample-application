@@ -23,7 +23,7 @@
     "changelogDate": "20200324150000",
     "entityTableName": "comentario",
     "dto": "no",
-    "pagination": "infinite-scroll",
+    "pagination": "no",
     "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,

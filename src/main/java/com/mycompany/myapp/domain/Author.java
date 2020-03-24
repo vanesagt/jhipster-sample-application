@@ -30,10 +30,6 @@ public class Author implements Serializable {
     @Column(name = "apellido")
     private String apellido;
 
-    @OneToMany(mappedBy = "author")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Location> locations = new HashSet<>();
-
     @ManyToMany
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     @JoinTable(name = "author_books",
@@ -74,31 +70,6 @@ public class Author implements Serializable {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-
-    public Set<Location> getLocations() {
-        return locations;
-    }
-
-    public Author locations(Set<Location> locations) {
-        this.locations = locations;
-        return this;
-    }
-
-    public Author addLocation(Location location) {
-        this.locations.add(location);
-        location.setAuthor(this);
-        return this;
-    }
-
-    public Author removeLocation(Location location) {
-        this.locations.remove(location);
-        location.setAuthor(null);
-        return this;
-    }
-
-    public void setLocations(Set<Location> locations) {
-        this.locations = locations;
     }
 
     public Set<Book> getBooks() {

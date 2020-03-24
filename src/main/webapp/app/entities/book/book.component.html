@@ -21,11 +21,10 @@
     <div class="table-responsive" id="entities" *ngIf="books?.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
-                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="title"><span jhiTranslate="jhipsterSampleApplicationApp.book.title">Title</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="description"><span jhiTranslate="jhipsterSampleApplicationApp.book.description">Description</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="editorial.id"><span jhiTranslate="jhipsterSampleApplicationApp.book.editorial">Editorial</span> <fa-icon icon="sort"></fa-icon></th>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.book.title">Title</span></th>
+                    <th scope="col" ><span jhiTranslate="jhipsterSampleApplicationApp.book.description">Description</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -34,11 +33,6 @@
                     <td><a [routerLink]="['/book', book.id, 'view']">{{ book.id }}</a></td>
                     <td>{{ book.title }}</td>
                     <td>{{ book.description }}</td>
-                    <td>
-                        <div *ngIf="book.editorial">
-                            <a [routerLink]="['/editorial', book.editorial?.id, 'view']" >{{ book.editorial?.id }}</a>
-                        </div>
-                    </td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"
@@ -65,15 +59,5 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-
-    <div *ngIf="books?.length > 0">
-        <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-        </div>
-
-        <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
-        </div>
     </div>
 </div>
