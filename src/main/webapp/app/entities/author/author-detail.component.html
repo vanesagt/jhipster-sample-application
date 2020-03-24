@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="author">
+            <h2><span jhiTranslate="jhipsterSampleApplicationApp.author.detail.title">Author</span> {{ author.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.author.name">Name</span></dt>
+                <dd>
+                    <span>{{ author.name }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.author.apellido">Apellido</span></dt>
+                <dd>
+                    <span>{{ author.apellido }}</span>
+                </dd>
+                <dt><span jhiTranslate="jhipsterSampleApplicationApp.author.books">Books</span></dt>
+                <dd>
+                    <span *ngFor="let books of author.books; let last = last">
+                        <a [routerLink]="['/book', books?.id, 'view']">{{ books.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/author', author.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

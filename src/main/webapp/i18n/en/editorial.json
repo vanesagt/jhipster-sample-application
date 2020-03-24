@@ -1,0 +1,23 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "editorial": {
+      "home": {
+        "title": "Editorials",
+        "createLabel": "Create a new Editorial",
+        "createOrEditLabel": "Create or edit a Editorial",
+        "notFound": "No Editorials found"
+      },
+      "created": "A new Editorial is created with identifier {{ param }}",
+      "updated": "A Editorial is updated with identifier {{ param }}",
+      "deleted": "A Editorial is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Editorial {{ id }}?"
+      },
+      "detail": {
+        "title": "Editorial"
+      },
+      "name": "Name",
+      "book": "Book"
+    }
+  }
+}
