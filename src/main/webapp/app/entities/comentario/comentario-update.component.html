@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-comentario-heading" jhiTranslate="jhipsterSampleApplicationApp.comentario.home.createOrEditLabel">Create or edit a Comentario</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comentario.comentario" for="field_comentario">Comentario</label>
+                    <input type="text" class="form-control" name="comentario" id="field_comentario"
+                           formControlName="comentario"/>
+                    <div *ngIf="editForm.get('comentario')!.invalid && (editForm.get('comentario')!.dirty || editForm.get('comentario')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('comentario')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comentario.valoracion" for="field_valoracion">Valoracion</label>
+                    <input type="number" class="form-control" name="valoracion" id="field_valoracion"
+                           formControlName="valoracion"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="jhipsterSampleApplicationApp.comentario.book" for="field_book">Book</label>
+                    <select class="form-control" id="field_book" name="book" formControlName="book">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="bookOption.id === editForm.get('book')!.value?.id ? editForm.get('book')!.value : bookOption" *ngFor="let bookOption of books; trackBy: trackById">{{ bookOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

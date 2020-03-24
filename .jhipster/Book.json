@@ -1,0 +1,48 @@
+{
+    "name": "Book",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "editorial",
+            "otherEntityRelationshipName": "book",
+            "relationshipName": "editorial",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "comentario",
+            "otherEntityRelationshipName": "book",
+            "relationshipName": "comentarios"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "author",
+            "otherEntityRelationshipName": "books",
+            "relationshipName": "authors",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200324150000",
+    "entityTableName": "book",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

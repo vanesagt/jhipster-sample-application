@@ -1,0 +1,29 @@
+{
+    "name": "Editorial",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "book",
+            "otherEntityRelationshipName": "editorial",
+            "relationshipName": "book",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20200324150100",
+    "entityTableName": "editorial",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
